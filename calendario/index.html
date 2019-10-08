@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Calendar | by Valeriu Timbuc for DesignModo</title>
+
+	<link rel="stylesheet" href="css/calendar.css" media="screen">
+
+	<style type="text/css">
+        body{
+            background:url(img/bg.png) repeat;
+            width:960px;margin:0 auto
+        }
+        .footer{
+            margin-top:100px;text-align:center;
+            color:#666;
+            font:bold 14px Arial
+        }
+        .footer a{
+            color:#999;text-decoration:none
+        }
+        #wrapper{
+            padding: 50px 0 0 325px;}#calendar{margin:25px auto; width: 370px;
+        }
+    
+        #calendar{
+            width: 90%;
+        }
+        .ui-datepicker{
+            width: 100%;
+        }
+        table.ui-datepicker-calendar{
+            width: 100%;
+        }
+        tbody{
+            text-align: center;
+        }
+        .ui-datepicker-calendar .ui-state-default{
+            margin: 0 auto;
+        }
+        td.block span{
+            background: #6700ff;
+            border-radius: 250px;
+        }
+    </style>
+<meta name="robots" content="noindex,follow" />
+    
+</head>
+
+<body>
+
+<img src="img/title.png" alt="">
+
+<div id="calendar"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="js/jquery-ui-datepicker.min.js"></script>
+<script>
+    var eventDates = ["2018-11-13","2018-11-15","2018-11-16"]
+
+$('#calendar').datepicker({
+    beforeShowDay: function(date){
+    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+      var highlight = eventDates.indexOf(string) > -1;
+        if (highlight) {
+             return [false, "block", highlight];
+            
+        } else {
+             return [true, 'able', ''];
+        }
+    }
+});
+    
+	$('#calendar').datepicker({
+		inline: true,
+		firstDay: 1,
+		showOtherMonths: true,
+        // The hidden field to receive the date
+        altField: "#dateHidden",
+        // The format you want
+        altFormat: "yy-mm-dd",
+        // The format the user actually sees
+        dateFormat: "dd/mm/yy",
+        onSelect: function (date) {
+        // Your CSS changes, just in case you still need them
+            alert("hola")
+    },
+
+		dayNamesMin: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'viernes', 'Sabado']
+	});
+</script>
+
+<div class="footer"><p>By <a href="http://vtimbuc.net/">Valeriu Timbuc</a> for <a href="http://designmodo.com">DesignModo</a>.</p></div>
+
+</body>
+
+</html>
